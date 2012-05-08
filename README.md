@@ -13,4 +13,4 @@ The following binding setting would allow switching between "File.cpp" -> "FileQ
         { "keys": ["alt+o"], "command": "switch_file_deluxe", "args": {"extensions": [".cpp", ".cxx", ".cc", ".c", "Qt.cpp", "Qt.h", ".hpp", ".hxx", ".h", "_p.h", "_p_p.h", ".ipp", ".inl", ".m", ".mm"]} }
     ]
 
-**Note:** The dot has to be explitely specified before extensions, unlike the stock switch_file command.
+**Note:** The dot has to be explicitely specified before extensions, unlike the stock switch_file command.
