@@ -42,7 +42,7 @@ class SwitchFileDeluxeCommand(sublime_plugin.WindowCommand):
                     count -= 1
                     break
 
-        dirsWithOpenedFiles = set([os.path.dirname(v.file_name()) for v in self.window.views()])
+        dirsWithOpenedFiles = set([os.path.dirname(v.file_name()) for v in self.window.views() if v.file_name()])
 
         for i in xrange(0, count):
             idx = (start + i) % len(extensions)
