@@ -1,0 +1,3 @@
+[
+    { "keys": ["super+alt+up"], "command": "switch_file_deluxe", "args": {"extensions": [".cpp", ".cxx", ".cc", ".c", ".hpp", ".hxx", ".h", ".ipp", ".inl", ".m", ".mm"]} }
+]
