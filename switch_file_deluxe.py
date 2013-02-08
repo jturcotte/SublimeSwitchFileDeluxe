@@ -36,7 +36,7 @@ class SwitchFileDeluxeCommand(sublime_plugin.WindowCommand):
 
 
         if ext != "":
-            for i in xrange(0, len(extensions)):
+            for i in range(0, len(extensions)):
                 if compare_file_names(extensions[i], ext):
                     start = i + 1
                     count -= 1
@@ -44,7 +44,7 @@ class SwitchFileDeluxeCommand(sublime_plugin.WindowCommand):
 
         dirsWithOpenedFiles = set([os.path.dirname(v.file_name()) for v in self.window.views() if v.file_name()])
 
-        for i in xrange(0, count):
+        for i in range(0, count):
             idx = (start + i) % len(extensions)
 
             new_file = base + extensions[idx]
