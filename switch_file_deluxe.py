@@ -51,13 +51,14 @@ class SwitchFileDeluxeCommand(sublime_plugin.WindowCommand):
             new_path = os.path.join(dir, new_file)
             if os.path.exists(new_path):
                 self.window.open_file(new_path)
-                break
+                return
             else:
-                found = False
                 for d in dirsWithOpenedFiles:
                     if os.path.exists(os.path.join(d, new_file)):
                         self.window.open_file(os.path.join(d, new_file))
-                        found = True
-                        break
-                if found:
-                    break;
+                        return
+
+        # Fallback to the Goto menu only if the file matches one of the extensions.
+        if base != file:
+            sublime.status_message("No file to switch found in directories of opened files, showing the Goto menu.")
+            self.window.run_command("show_overlay", {"overlay": "goto", "text": base})
