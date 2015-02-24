@@ -3,7 +3,7 @@ SublimeSwitchFileDeluxe
 
 Switch header/source based on generic suffixes (not just the extension).
 
-If a file can't be found in the same directory, the command also search for it in the directory of other already opened files.
+If a file can't be found in the same directory, the command also searches for it in the directory of other already opened files.
 
 Example
 =======
