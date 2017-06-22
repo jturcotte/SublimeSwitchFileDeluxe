@@ -20,9 +20,12 @@ def commonBase(fileName, extensions):
     return base, ext
 
 class SwitchFileDeluxeCommand(sublime_plugin.WindowCommand):
-    def run(self, extensions=[]):
+    def run(self, extensions=[], paths=['.']):
         if not self.window.active_view():
             return
+
+        if '.' not in paths:  # always search in same path
+            paths.append('.')
 
         path = self.window.active_view().file_name()
         if not path:
@@ -48,15 +51,16 @@ class SwitchFileDeluxeCommand(sublime_plugin.WindowCommand):
             idx = (start + i) % len(extensions)
 
             new_file = base + extensions[idx]
-            new_path = os.path.join(dir, new_file)
-            if os.path.exists(new_path):
-                self.window.open_file(new_path)
-                return
-            else:
-                for d in dirsWithOpenedFiles:
-                    if os.path.exists(os.path.join(d, new_file)):
-                        self.window.open_file(os.path.join(d, new_file))
-                        return
+
+            for relative_path in paths:
+                new_path = os.path.normpath(os.path.join(dir, relative_path, new_file))
+                if os.path.exists(new_path):
+                    self.window.open_file(new_path)
+                    return
+            for d in dirsWithOpenedFiles:
+                if os.path.exists(os.path.join(d, new_file)):
+                    self.window.open_file(os.path.join(d, new_file))
+                    return
 
         # Fallback to the Goto menu only if the file matches one of the extensions.
         if base != file:

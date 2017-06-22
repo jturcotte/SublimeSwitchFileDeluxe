@@ -4,6 +4,7 @@ SublimeSwitchFileDeluxe
 Switch header/source based on generic suffixes (not just the extension).
 
 If a file can't be found in the same directory, the command also searches for it in the directory of other already opened files.
+It can also search in relative paths specified with `"paths"` setting. For example if `"paths"` is `["..", "../impl", "internal"]`, then header/source will be searched in parent folder, in 'impl' sibling folder and in 'internal' subfolder.
 
 Example
 =======
